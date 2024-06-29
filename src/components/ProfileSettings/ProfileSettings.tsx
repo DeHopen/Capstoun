@@ -1,10 +1,10 @@
 "use client"
 
-import React, {useState, ChangeEvent} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useState, ChangeEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import styles from '../../Styles/ProfileSettings/profileSettings.module.scss';
-import {RootState} from "@/Store/store";
+import { RootState } from "@/Store/store";
 import UploadPhoto from "@/components/ProfileSettings/UploadPhoto/UploadPhoto";
 import {
   setAbout,
@@ -97,59 +97,59 @@ const ProfileSettings: React.FC = () => {
 
 
   return (
-      <div className={styles['profile-settings']}>
-        <h2>Настройки профиля</h2>
-        <UploadPhoto></UploadPhoto>
-        <ModalPhoto show={profile.showModal}></ModalPhoto>
-        <div>
-          <label>Имя</label>
-          <input type="text" name="name" value={profileState.name} onChange={handleInputChange}/>
-        </div>
-        <div>
-          <div>
-            <label>Возраст</label>
-            <input type="text" name="age" value={profileState.age} onChange={handleInputChange}/>
-          </div>
-          <div>
-            <label>Религия</label>
-            <input type="text" name="religion" value={profileState.religion} onChange={handleInputChange}/>
-          </div>
-        </div>
-        <div>
-          <label>О себе</label>
-          <textarea name="about" value={profileState.about} onChange={handleTextareaChange}/>
-        </div>
-        <div className={styles['interests']}>
-          <label>Интересы (выберите от 3-х)</label>
-          <div className={styles['interests-options']}>
-            {interestsOptions.map((interest) => (
-                <button
-                    key={interest}
-                    className={profile.interests.includes(interest) ? styles['selected'] : ''}
-                    onClick={() => handleInterestClick(interest)}
-                >
-                  {interest}
-                </button>
-            ))}
-          </div>
-        </div>
-        <CoLifeSettings />
-        <div>
-          <label>Соц. сети</label>
-          {profile.socialLinks.map((link, index) => (
-              <div key={index} className={styles['social-link']}>
-                <input
-                    type="text"
-                    value={link}
-                    onChange={(e) => handleSocialLinkChange(e, index)}
-                />
-                <button type="button" onClick={() => handleRemoveSocialLink(index)}>Удалить</button>
-              </div>
-          ))}
-          <button type="button" onClick={handleAddSocialLink}>Добавить еще соц. сеть</button>
-        </div>
-        <button onClick={handleSave}>Сохранить</button>
+    <div className={styles['profile-settings']}>
+      <h2>Настройки профиля</h2>
+      <UploadPhoto></UploadPhoto>
+      <ModalPhoto show={profile.showModal}></ModalPhoto>
+      <div className={styles.inputContainer}>
+        <label>Имя</label>
+        <input type="text" name="name" value={profileState.name} onChange={handleInputChange} placeholder='Имя' />
       </div>
+      <div className={styles.ageAndReligion}>
+        <div className={styles.ageContainer}>
+          <label>Возраст:</label>
+          <input type="text" name="age" value={profileState.age} onChange={handleInputChange} placeholder='25 лет' />
+        </div>
+        <div className={styles.religionContainer}>
+          <label>Религия:</label>
+          <input type="text" name="religion" value={profileState.religion} onChange={handleInputChange} placeholder='Атеист' />
+        </div>
+      </div>
+      <div className={styles.aboutContainer}>
+        <label>О себе</label>
+        <textarea name="about" value={profileState.about} onChange={handleTextareaChange} placeholder='Меня зовут Кира Йошикагэ. Мне 33 года. Мой дом находится в северо-восточной части Морио, в районе поместий. Работаю до утра сплю без особых проблем. Утром я просыпаюсь, не чувствуя ни усталости, ни стресса.' />
+      </div>
+      <div className={styles['interests']}>
+        <label>Интересы (выберите от 3-х)</label>
+        <div className={styles['interests-options']}>
+          {interestsOptions.map((interest) => (
+            <button
+              key={interest}
+              className={profile.interests.includes(interest) ? styles['selected'] : ''}
+              onClick={() => handleInterestClick(interest)}
+            >
+              {interest}
+            </button>
+          ))}
+        </div>
+      </div>
+      <CoLifeSettings />
+      <div className={styles.label_soc_set}>
+        <label>Соц. сети</label>
+        {profile.socialLinks.map((link, index) => (
+          <div key={index} className={styles['social-link']}>
+            <input
+              type="text"
+              value={link}
+              onChange={(e) => handleSocialLinkChange(e, index)}
+            />
+            <button className={styles.delete_button} type="button" onClick={() => handleRemoveSocialLink(index)}></button>
+          </div>
+        ))}
+        <button className={styles.addButton} type="button" onClick={handleAddSocialLink}></button>
+      </div>
+      <button className={styles.save_button} onClick={handleSave}>Сохранить</button>
+    </div>
   );
 };
 

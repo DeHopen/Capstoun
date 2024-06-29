@@ -1,18 +1,159 @@
+/*Name*/
+.inputContainer {
+  margin-bottom: 20px;
+  width: 100%; /* Adjust width as needed */
+
+  label {
+    display: none;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: center; /* Center align the text */
+  }
+
+  input[type='text'] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #D5DBE9;
+    border-radius: 25px; /* Make it circular */
+    outline: none;
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+
+    &:focus {
+      border-color: #4caf50;
+    }
+
+    &::placeholder {
+      /* Placeholder styles */
+      text-align: center; /* Center align placeholder text */
+      color: #999; /* Placeholder text color */
+    }
+  }
+}
+// Religion and Age
+.ageAndReligion {
+  display: flex;
+}
+
+.ageContainer{
+  margin-left: 4%;
+}
+.ageContainer,
+.religionContainer {
+  display: flex;
+  
+  
+  label {
+    font-size: 16px;
+    color: #8E94A2;
+    margin-bottom: 0; /* Remove bottom margin to align with input */
+    margin-top: 20px; /* Move label 20px to the bottom */
+  }
+
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #D5DBE9;
+    border-radius: 25px; /* Make it circular */
+    outline: none;
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+    width: 100%; /* Take up remaining space */
+
+    &:focus {
+      border-color: #4caf50;
+      text-align: center;
+    }
+
+    &::placeholder {
+      text-align: center; /* Center align placeholder text */
+      color: #999; /* Placeholder text color */
+    }
+  }
+}
+
+
+// About 
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start of the container */
+  margin-bottom: 20px;
+  width: 100%; /* Adjust width as needed */
+
+  label {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 1px; /* Space between label and textarea */
+    margin-left: 25px;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #D5DBE9;
+    border-radius: 25px; /* Make it circular */
+    outline: none;
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+    height: 170px; /* Increase height for more content */
+    line-height: 1.5; /* Increase line height for better readability */
+    resize: vertical; /* Allow vertical resizing only */
+
+    &:focus {
+      border-color: #4caf50;
+    }
+
+    &::placeholder {
+      text-align: justify; /* Stretch placeholder text across the width */
+      color: #8C8D92; /* Placeholder text color */
+      line-height: 1.5; /* Increase line height for placeholder text */
+      white-space: pre-wrap; /* Preserve whitespace to control the text wrapping */
+    }
+  }
+}
+
+
+
 .profile-settings {
+
+  
+  .addButton {
+    background: url('/add_new_social_media.svg') no-repeat center center;
+    background-size: contain;
+    border: none;
+    width: 48px; /* Set appropriate width */
+    height: 48px; /* Set appropriate height */
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 0;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  
+
+  
   display: flex;
   flex-flow: column;
   align-items: center;
   margin-top: 27px ;
+
+
+  /*Header "Настройки профиля"*/
   h2{
     font-size: 25px;
     align-self: flex-start;
     margin-left: 21px;
   }
+  
   .gradient{
     width: 100vw;
     height: 482px;
     background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.00) 47.72%), lightgray 0.884px -19.281px / 98.664% 121.966% no-repeat;
   }
+
   .photo-upload {
     display: flex;
     margin-top: 21px;
@@ -63,50 +204,63 @@
       width: 100%;
       height: 400px;
     }
+    // Make it rounder
+    // button {
+    //   margin-top: 10px;
+    //   background-color: #4caf50;
+    //   color: white;
+    //   padding: 10px 20px;
+    //   border: none;
+    //   border-radius: 5px;
+    //   cursor: pointer;
+    //   font-size: 16px;
 
-    button {
-      margin-top: 10px;
-      background-color: #4caf50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-
-      &:hover {
-        background-color: #45a049;
-      }
-    }
+    //   &:hover {
+    //     background-color: #45a049;
+    //   }
+    // }
   }
   .interests {
-    margin-top: 20px;
-
-
+    margin-top: 10px; /* Add margin-top for the container */
+    .label {
+      margin-left: 10px;
+    }
+  
     .interests-options {
+      margin-left: 0%; /* Add margin-left for the container */
+      margin-right: 0%; /* Add margin-right for the container */
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-
+      justify-content: space-between; /* Distribute space between buttons */
+      padding: 10px 4%; /* Add padding to create space at the edges and from the top */
+      
       button {
-        background: #444;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 5px 10px;
+        flex: 0 0 auto; /* Prevent buttons from growing or shrinking */
+        margin: 7.5px 0; /* Vertical margin only */
+        color: #8C8D92;
+        border: 2px solid #D5DBE9;
+        border-radius: 25px;
         cursor: pointer;
-        transition: background-color 0.3s;
-
+        padding: 8px 20px;
+        background: none; /* Ensure no background color initially */
+  
         &.selected {
-          background: #4caf50;
-        }
-
-        &:hover {
-          background: #555;
+          border: 2px solid transparent;
+          background: linear-gradient(#2D3037, #2D3037) padding-box,
+          linear-gradient(#4AF11F, #7640EE) border-box;
+          color: #fff;
         }
       }
+      
     }
+    
+
+
   }
+  
+  
+  
+  
 
   label {
     align-self: flex-start;
@@ -118,18 +272,99 @@
     margin: 10px 20px;
   }
 
-  button {
-    margin-top: 20px;
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
+ 
+  
+
+  
+}
+.save_button {
+  margin-top: 20px;
+  background: #4AF11F;
+  color: #2D3037;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4%;
+
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+.label_soc_set {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Выравнивание по левому краю */
+  margin-top: 40px;
+  position: relative;
+
+  label {
+    font-size: 25px;
+    color: #FFFFFF;
+    margin-bottom: 10px; /* Отступ снизу для метки */
+    width: max-content; /* Ширина равна содержимому (метке) */
+  }
+
+  .socialLinksContainer {
+    display: flex;
+    flex-direction: column; /* Расположение в колонку */
+    align-items: flex-start; /* Выравнивание по левому краю */
+    width: 100%; /* Ширина контейнера */
+    gap: 10px; /* Промежуток между элементами */
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ширина контейнера */
+    margin-bottom: 10px; /* Промежуток между элементами */
+  }
+
+  .social-link input {
+    padding: 8px; /* Отступы внутри поля ввода */
+    font-size: 16px; /* Размер шрифта */
+    border: 2px solid #D5DBE9; /* Рамка */
+    border-radius: 25px; /* Закругленные углы */
+    outline: none; /* Убираем контур фокуса */
+    width: 90%; /* Ширина поля ввода */
+    box-sizing: border-box; /* Учитываем рамку и внутренние отступы */
+  }
+
+  .delete_button {
+    background: url('/trash.svg') no-repeat center center;
+    background-size: contain;
+    width: 36px; /* Ширина кнопки */
+    height: 36px; /* Высота кнопки */
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Курсор при наведении */
+    margin-left: 10px; /* Отступ слева */
+  }
+
+  .delete_button:hover {
+    opacity: 0.8; /* Прозрачность при наведении */
+  }
+
+  .addButton {
+    background: url('/add_new_social_media.svg') no-repeat center center;
+    background-size: contain;
     border: none;
-    border-radius: 5px;
+    width: 32px; /* Ширина кнопки */
+    height: 32px; /* Высота кнопки */
     cursor: pointer;
-    font-size: 16px;
+    margin-top: 10px; /* Отступ сверху */
+    align-self: center; /* Выравнивание по центру относительно контейнера */
 
     &:hover {
-      background-color: #45a049;
+      opacity: 0.8; /* Прозрачность при наведении */
     }
   }
 }
+
+
+
+
+
+
