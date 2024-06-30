@@ -2,7 +2,8 @@
   margin-top: 40px;
   width: 100%;
   .title {
-    margin-left: 4%;
+    margin-left: 30px;
+    font-size: 20px;
   }
 
   .co-life-options {
@@ -27,7 +28,7 @@
       }
 
       input[type="range"] {
-        width: 90%;
+        width: 85%;
         -webkit-appearance: none;
         appearance: none;
         background: #8E94A2;
@@ -58,7 +59,7 @@
       .labels {
         display: flex;
         justify-content: space-between;
-        width: 100%;
+        width: 95%;
         margin-top: 5px;
         padding: 0 20px; /* Подвинуть слова от краев к середине на 2px */
 

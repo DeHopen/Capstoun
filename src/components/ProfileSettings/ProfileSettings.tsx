@@ -17,13 +17,14 @@ import {
 } from "@/Store/slices/profileSlice";
 import ModalPhoto from "@/components/ProfileSettings/ModalPhoto/ModalPhoto";
 import CoLifeSettings from "@/components/ProfileSettings/CoLife/CoLife";
+import Interests from "@/components/ProfileSettings/Interests/Interests";
+import About from "@/components/ProfileSettings/About/About";
+import Image from "next/image";
 
 const ProfileSettings: React.FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const profile = useSelector((state: RootState) => state.profile);
-
-  const interestsOptions = ['Музыка', 'Спорт', 'Книги', 'Социальная жизнь', 'Животные', 'Бизнес', 'Саморазвитие'];
 
   const [profileState, setProfileState] = useState({
     name: profile.name,
@@ -71,17 +72,6 @@ const ProfileSettings: React.FC = () => {
     router.push('/');
   };
 
-  const handleInterestClick = (interest: string) => {
-    let updatedInterests = [...profile.interests];
-    if (updatedInterests.includes(interest)) {
-      updatedInterests = updatedInterests.filter((i) => i !== interest);
-    } else {
-      if (updatedInterests.length < 3) {
-        updatedInterests.push(interest);
-      }
-    }
-    dispatch(setInterests(updatedInterests));
-  };
 
   const handleSocialLinkChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     dispatch(updateSocialLink({ index, link: e.target.value }));
@@ -115,24 +105,8 @@ const ProfileSettings: React.FC = () => {
           <input type="text" name="religion" value={profileState.religion} onChange={handleInputChange} placeholder='Атеист' />
         </div>
       </div>
-      <div className={styles.aboutContainer}>
-        <label>О себе</label>
-        <textarea name="about" value={profileState.about} onChange={handleTextareaChange} placeholder='Меня зовут Кира Йошикагэ. Мне 33 года. Мой дом находится в северо-восточной части Морио, в районе поместий. Работаю до утра сплю без особых проблем. Утром я просыпаюсь, не чувствуя ни усталости, ни стресса.' />
-      </div>
-      <div className={styles['interests']}>
-        <label>Интересы (выберите от 3-х)</label>
-        <div className={styles['interests-options']}>
-          {interestsOptions.map((interest) => (
-            <button
-              key={interest}
-              className={profile.interests.includes(interest) ? styles['selected'] : ''}
-              onClick={() => handleInterestClick(interest)}
-            >
-              {interest}
-            </button>
-          ))}
-        </div>
-      </div>
+      <About></About>
+      <Interests></Interests>
       <CoLifeSettings />
       <div className={styles.label_soc_set}>
         <label>Соц. сети</label>
@@ -143,10 +117,10 @@ const ProfileSettings: React.FC = () => {
               value={link}
               onChange={(e) => handleSocialLinkChange(e, index)}
             />
-            <button className={styles.delete_button} type="button" onClick={() => handleRemoveSocialLink(index)}></button>
+            <button className={styles.delete_button} type="button" onClick={() => handleRemoveSocialLink(index)}> <Image src={'/trash.svg'} alt={'Trash'} width={20} height={20}/> </button>
           </div>
         ))}
-        <button className={styles.addButton} type="button" onClick={handleAddSocialLink}></button>
+        <button className={styles.addButton} type="button" onClick={handleAddSocialLink}><Image src={'/add_new_social_media.svg'} alt={'Trash'} width={30} height={30}/></button>
       </div>
       <button className={styles.save_button} onClick={handleSave}>Сохранить</button>
     </div>
