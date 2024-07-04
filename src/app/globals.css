@@ -90,5 +90,12 @@ legend {
 body{
   background: #2D3037;
   color: #fff;
+
+}
+button{
+  outline: none;
 }
 
+li{
+  outline: none;
+}
