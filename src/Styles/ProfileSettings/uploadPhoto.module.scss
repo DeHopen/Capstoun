@@ -33,6 +33,10 @@
       background-color: #444;
       border-radius: 8px;
       transition: background-color 0.3s;
+
+      input{
+        outline: none;
+      }
     }
   }
 }
@@ -48,6 +52,7 @@
     margin-top: 1em;
 
     button {
+      outline: none;
       padding: 0.5em 1em;
       background-color: #28a745;
       color: #fff;

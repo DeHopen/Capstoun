@@ -36,6 +36,7 @@
   }
 
   .main-button {
+    outline: none;
     margin-bottom: 1em;
     padding: 0.5em 1em;
     background-color: #28a745;
@@ -53,6 +54,7 @@
     gap: 1em;
 
     button {
+      outline: none;
       padding: 0.5em 1em;
       background-color: #dc3545;
       color: #fff;
