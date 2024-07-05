@@ -1,13 +1,12 @@
 import {FC} from 'react';
+import Dating from "@/components/Dating/Dating";
 
 
 const Page: FC= () => {
-  console.log('Render Page');
-  const text = 'Page component';
 
   return (
       <>
-        <h2>{text}</h2>
+        <Dating/>
       </>
   );
 };
